@@ -1,3 +1,4 @@
+#! /bin/bash
 yum update  -y
 amazon-linux-extras install epel -y
 amazon-linux-extras install nginx1.12 -y
