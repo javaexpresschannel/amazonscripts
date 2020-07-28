@@ -9,10 +9,20 @@ Amazon Linux 2  : cat /etc/os-release
       CPE_NAME="cpe:2.3:o:amazon:amazon_linux:2"
       HOME_URL="https://amazonlinux.com/"
 
-Installation steps for nginx in Centos 
+Cloud Watch Logs
+----------------
+1) Installation steps for nginx in Centos 
 --------------------------------------
 #! /bin/bash
 yum update  -y
 amazon-linux-extras install epel -y
 amazon-linux-extras install nginx1.12 -y
 systemctl  start nginx
+
+2) Creat role CloudWatchlogs for ec2 
+3) Install awslogs in ec2
+      yum install awslogs -y
+      ls /etc/awslogs/
+4) To find out logs by using below command
+      find / -name *.log
+5)
