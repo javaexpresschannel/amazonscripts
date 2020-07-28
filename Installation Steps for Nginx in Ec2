@@ -25,4 +25,32 @@ systemctl  start nginx
       ls /etc/awslogs/
 4) To find out logs by using below command
       find / -name *.log
-5)
+5) Configuration changes in awslogs.conf
+
+            /var/log/nginx/error.log
+            /var/log/nginx/access.log
+
+            [/var/log/access]
+            datetime_format = %b %d %H:%M:%S
+            file = /var/log/nginx/error.log
+            buffer_duration = 5000
+            log_stream_name = {instance_id}
+            initial_position = start_of_file
+            log_group_name = AccessLogsNginx
+
+
+            [/var/log/error]
+            datetime_format = %b %d %H:%M:%S
+            file = /var/log/nginx/access.log
+            buffer_duration = 5000
+            log_stream_name = {instance_id}
+            initial_position = start_of_file
+            log_group_name = ErrorLogsNginx
+
+6) https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html
+sudo service awslogs start ( Amazon Linux )
+sudo systemctl start awslogsd ( Amazon Linux2)
+
+7) Check in North Virgina region - > cloud watch logs
+      (i) create alaram for suspicious Ip's
+
